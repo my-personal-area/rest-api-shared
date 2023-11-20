@@ -1,8 +1,8 @@
 use std::sync::Arc;
 
-use rust_extensions::date_time::DateTimeAsMicroseconds;
 use service_sdk::my_http_server;
 use service_sdk::my_http_server::{RequestClaim, RequestCredentials};
+use service_sdk::rust_extensions::date_time::DateTimeAsMicroseconds;
 
 use super::SessionEntity;
 
