@@ -1,4 +1,4 @@
-use service_sdk::my_http_server::HttpContext;
+use service_sdk::my_http_server::{HttpContext, HttpRequestHeaders};
 
 const AUTH_HEADER: &str = "authorization";
 
@@ -8,9 +8,12 @@ pub trait GetSessionToken {
 
 impl GetSessionToken for HttpContext {
     fn get_session_token(&self) -> Option<&str> {
-        let auth_header = self.request.get_header(AUTH_HEADER)?;
+        let auth_header = self
+            .request
+            .get_headers()
+            .try_get_case_insensitive(AUTH_HEADER)?;
 
-        let token = extract_token(auth_header.as_bytes())?;
+        let token = extract_token(auth_header.value)?;
 
         match std::str::from_utf8(token) {
             Ok(result) => Some(result),

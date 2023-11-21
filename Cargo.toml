@@ -9,7 +9,7 @@ default = []
 auth-middleware = ["service-sdk/my-nosql-data-reader-sdk"]
 
 [dependencies]
-service-sdk = { tag = "0.2.4", git = "https://github.com/MyJetTools/service-sdk.git", features = [
+service-sdk = { tag = "0.2.5", git = "https://github.com/MyJetTools/service-sdk.git", features = [
     "my-nosql-sdk",
     "macros",
     "my-nosql-data-reader-sdk",
