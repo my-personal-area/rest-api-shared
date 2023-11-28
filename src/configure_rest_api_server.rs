@@ -2,7 +2,7 @@ use std::sync::Arc;
 
 use service_sdk::{
     my_http_server::controllers::{ControllersAuthorization, RequiredClaims},
-    my_no_sql_sdk::reader::MyNoSqlDataReader,
+    my_no_sql_sdk::reader::MyNoSqlDataReaderTcp,
     HttpServerBuilder,
 };
 
@@ -10,7 +10,7 @@ use crate::middlewares::{AuthFailResponseFactory, AuthMiddleware, SessionEntity}
 
 pub fn configure_rest_api_server(
     http_server_builder: &mut HttpServerBuilder,
-    sessions_reader: Arc<dyn MyNoSqlDataReader<SessionEntity> + Send + Sync + 'static>,
+    sessions_reader: Arc<MyNoSqlDataReaderTcp<SessionEntity>>,
 ) {
     http_server_builder.set_authorization(ControllersAuthorization::BearerAuthentication {
         global: true,
