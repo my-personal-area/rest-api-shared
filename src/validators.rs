@@ -95,7 +95,7 @@ fn validate_password_text(value: &str, min_len: usize) -> Result<(), String> {
 
 #[cfg(test)]
 mod tests {
-    use crate::http::controllers::validators::validate_email_text;
+    use super::*;
 
     #[test]
     fn validate_email_is_correct() {
